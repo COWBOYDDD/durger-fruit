@@ -9,7 +9,8 @@ const food = [
     {name: 'Watermelon',  price: 112, path: 'img/watermelon.png'}
 ];
 
-const items = document.querySelector('.items');
+const wrapper = document.querySelector('.wrapper');  // обёртка
+const items = document.querySelector('.items');      // контейнер для фруктов (товаров)
 const viewOrder = document.querySelector('#view-order');
 
 let index = 0;
@@ -100,10 +101,34 @@ viewOrder.addEventListener('click', () => {
                 name: name, 
                 price: Number(price),
                 counter: Number(counter.textContent),
-                summa: price * Number(counter.textContent)
+                summa: price * Number(counter.textContent),
+                image: allFood[index].querySelector('.image > img').src
             });
         }
         index++;
     }
-    console.log(check)
+
+    console.log(check);
+    items.classList.add('hide');
+    viewOrder.classList.add('hide');
+
+    index = 0;
+    while (index < check.length) {
+        const div = document.createElement('div');
+        const image = check[index].image;
+        const pathToImage = image.slice(image.indexOf("img"))
+        div.innerHTML = `
+            <div class="image">
+                <img src="${pathToImage}">
+                <span>${check[index].name}</span>
+                <span>Кол-во: <b>${check[index].counter}</b></span>
+                <span>Цена: <b>${check[index].summa}</b></span>
+            </div>
+        `;
+
+        wrapper.appendChild(div)
+
+        index++
+    }
+
 });
