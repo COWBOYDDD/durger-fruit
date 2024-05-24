@@ -1,3 +1,4 @@
+const tg = window.Telegram.WebApp;
 const food = [
     {name: 'Grapes',      price: 30,  path: 'img/grapes.png'},
     {name: 'Blueberries', price: 60,  path: 'img/blueberries.png'},
@@ -109,6 +110,7 @@ viewOrder.addEventListener('click', () => {
     }
 
     console.log(check);
+    tg.sendData(JSON.stringify(check));
     items.classList.add('hide');
     viewOrder.classList.add('hide');
 
