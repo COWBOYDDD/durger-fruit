@@ -108,7 +108,7 @@ viewOrder.addEventListener('click', () => {
         index++;
     }
 
-    console.log(check);
+    // console.log(check);
     items.classList.add('hide');
     viewOrder.classList.add('hide');
 
@@ -135,7 +135,7 @@ viewOrder.addEventListener('click', () => {
     wrapper.appendChild(checkBtn);
     checkBtn.addEventListener('click', () => {
         let tg = window.Telegram.WebApp;
-        tg.sendData()
+        tg.sendData(JSON.stringify(check));  // [{}, {}, {}, ...] => "[{}, {}, {}, ...]"
     })
 });
 
